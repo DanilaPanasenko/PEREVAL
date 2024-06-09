@@ -22,7 +22,7 @@ class LevlSerializers(serializers.ModelSerializer):
 
 
 class ImagesSerializers(serializers.ModelSerializer):
-    data = serializers.URLField()
+    image = serializers.URLField()
 
 
     class Meta:
@@ -31,7 +31,7 @@ class ImagesSerializers(serializers.ModelSerializer):
 
 
 class PerevalSerializers(WritableNestedModelSerializer):
-    add_time = serializers.DateTimeField(format='%d-%m-Y %H:%M:%S', read_only=True)
+    add_time = serializers.DateTimeField(format='%d-%m-%Y %H:%M:%S', read_only=True)
     user = UsersSerializers()
     coords = CoordsSerializers()
     level = LevlSerializers(allow_null=True)
