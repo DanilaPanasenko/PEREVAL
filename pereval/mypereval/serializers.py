@@ -73,3 +73,18 @@ class PerevalSerializers(WritableNestedModelSerializer):
                 title = image.pop('title')
                 Images.objects.create(data=data, perev=perev, title=title)
             return perev
+
+        def validate(self, data):
+            if self.instance is not None:
+                instance_user = self.instance.user
+                data_user = data.get('user')
+                validating_user_fields = [
+                    instance_user.email != data_user['email'],
+                    instance_user.last_name != data_user['last_name'],
+                    instance_user.first_name != data_user['first_name'],
+                    instance_user.patronymic != data_user['patronymic'],
+                    instance_user.phone != data_user['phone'],
+                ]
+                if data_user is not None and any(validating_user_fields):
+                    raise serializers.ValidationError({'Отклонено': 'нельзя изменять данные пользователя'})
+            return data

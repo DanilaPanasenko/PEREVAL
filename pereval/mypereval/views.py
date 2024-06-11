@@ -2,6 +2,7 @@ from rest_framework.response import Response
 
 from .serializers import *
 from rest_framework import viewsets, status
+from drf_yasg.utils import swagger_auto_schema
 
 
 class UsersViewsets(viewsets.ModelViewSet):
@@ -71,3 +72,11 @@ class PerevalViewsets(viewsets.ModelViewSet):
                 'state': '0',
                 'message': f'Отклонено: {pereval.get_status_display()}'
             })
+
+    @swagger_auto_schema(auto_schema=None)
+    def update(self, request, *args, **kwargs):
+        pass
+
+    @swagger_auto_schema(auto_schema=None)
+    def destroy(self, request, *args, **kwargs):
+        pass
