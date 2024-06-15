@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from mypereval.views import *
 from rest_framework import routers
+from .yasg import urlpatterns as doc_urls
 
 router = routers.DefaultRouter()
 router.register(r'Pereval', PerevalViewsets, basename='perev')
@@ -27,3 +28,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
 ]
+
+urlpatterns += doc_urls
