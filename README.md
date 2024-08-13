@@ -7,3 +7,4 @@
 <h2>Ссылка проекта на pythonanywhere
   [pereval-pythonanywhere](https://danilap.pythonanywhere.com/Pereval/)
 </h2>
+<h3>Проект выполнен в рамках "виртуальной стажировки"</h3>
